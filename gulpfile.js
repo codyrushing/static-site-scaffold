@@ -140,7 +140,29 @@ gulp.task("watch", (done) => {
   done();
 });
 
-gulp.task("clean", function(){
+gulp.task("server", function(done){
+  const nodeStatic = require("node-static");
+  const port = 8080;
+  var fileServer = new nodeStatic.Server(paths.distBase);
+
+  require("http").createServer(function (request, response) {
+    request.addListener("end", function () {
+      fileServer.serve(request, response);
+    }).resume();
+  }).listen(port, (err) => {
+    if (err) throw err;
+    console.log(
+  `
+  * * * * * * * * * * * * * * * * * * * * * * * *
+  * Local server is up and running on port ${port} *
+  * * * * * * * * * * * * * * * * * * * * * * * *
+  `
+    );
+    done(err);
+  });
+});
+
+gulp.task("clean", () => {
   return del([
     paths.distBase,
     vendorCSSDirectory
@@ -152,5 +174,5 @@ gulp.task("default", ["clean"], function(done){
 });
 
 gulp.task("dev", ["default"], function(done){
-  return runSequence("watch", done);
+  runSequence("watch", "server", done);
 });

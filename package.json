@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "IS_DEVELOPMENT='true' gulp dev;",
     "build": "gulp",
-    "preview": "http-server ./public/dist"
+    "preview": "gulp server"
   },
   "repository": {
     "type": "git",
@@ -46,8 +46,8 @@
     "gulp-wrap": "^0.13.0",
     "helper-markdown": "^0.2.1",
     "helper-md": "^0.2.1",
-    "http-server": "^0.9.0",
     "lazypipe": "^1.0.1",
+    "node-static": "^0.7.8",
     "normalize.css": "^3.0.3",
     "run-sequence": "^1.1.5",
     "vinyl-source-stream": "^1.1.0"
