@@ -6,5 +6,6 @@ My static site generator that features:
 * JS app bundling with Babel ES2015 transpiling and Babelify for modules
 * Gulp for building all front end assets
 
+## Commands
 * `npm run build` - Builds all front end assets
 * `npm run dev` - Builds all front end assets in dev mode and watches source files
